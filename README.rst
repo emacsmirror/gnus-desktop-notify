@@ -73,4 +73,4 @@ See the ``gnus-desktop-notify`` customization group for more details.
 
 
 .. _alert: https://github.com/jwiegley/alert
-.. _growl: http://growl.info/
+.. _growl: https://growl.github.io/growl/
