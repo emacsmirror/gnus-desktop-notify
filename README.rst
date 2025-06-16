@@ -18,7 +18,7 @@ new messages are received. For basic usage, to be used in conjunction with
 
   (require 'gnus-desktop-notify)
   (gnus-desktop-notify-mode)
-  (gnus-demon-add-scanmail)
+  (gnus-demon-add-rescan)
 
 into your ``.gnus`` file. The default is to use alert_ if available, which
 works on every operating system and allows the user to customize the
@@ -52,7 +52,7 @@ follows:
   (setq gnus-desktop-notify-function 'gnus-desktop-notify-exec
 	gnus-desktop-notify-exec-program "growlnotify -a Emacs.app -m")
   (gnus-desktop-notify-mode)
-  (gnus-demon-add-scanmail)
+  (gnus-demon-add-rescan)
 
 
 Advanced setup
