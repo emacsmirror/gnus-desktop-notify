@@ -26,6 +26,11 @@
 
 ;;; Change Log:
 
+;; 1.5:
+;; * Revert to use the `notifications' library by default if
+;;   available.  The `alert' library doesn't do anything useful in its
+;;   default configuration.
+;;
 ;; 1.4:
 ;; * Use `alert' package by default if available (`gnus-desktop-notify-alert').
 ;;
@@ -83,8 +88,8 @@
 (require 'format-spec)
 (require 'gnus-group)
 
-(unless (require 'alert nil t)
-  (require 'notifications nil t))
+(unless (require 'notifications nil t)
+  (require 'alert nil t))
 
 (declare-function alert "alert")
 (declare-function notifications-notify "notifications")
@@ -96,8 +101,8 @@
   :group 'gnus)
 
 (defcustom gnus-desktop-notify-function
-  (cond ((featurep 'alert)         'gnus-desktop-notify-alert)
-        ((featurep 'notifications) 'gnus-desktop-notify-dbus)
+  (cond ((featurep 'notifications) 'gnus-desktop-notify-dbus)
+        ((featurep 'alert)         'gnus-desktop-notify-alert)
         (t                         'gnus-desktop-notify-send))
   "Notification backend used when a group receives new messages.
 The backend is passed the notification content as a single,
@@ -109,8 +114,8 @@ or fallback to the generic `gnus-desktop-notify-send' otherwise.
 
 The following functions are available (whose documentation see):
 
+`gnus-desktop-notify-dbus':  Use the `notifications' library (default).
 `gnus-desktop-notify-alert': Use the `alert' library.
-`gnus-desktop-notify-dbus':  Use the `notifications' library.
 `gnus-desktop-notify-send':  Call the `notify-send' program.
 `gnus-desktop-notify-exec':  Call a customizable program."
   :type 'function)
