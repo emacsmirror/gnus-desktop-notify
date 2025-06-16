@@ -20,13 +20,12 @@ new messages are received. For basic usage, to be used in conjunction with
   (gnus-desktop-notify-mode)
   (gnus-demon-add-rescan)
 
-into your ``.gnus`` file. The default is to use alert_ if available, which
-works on every operating system and allows the user to customize the
-notification through emacs. See https://github.com/jwiegley/alert#for-users for
-further info. If not available, the ``notifications`` library (part of emacs >=
-24) is used, so no external dependencies are required. With emacs <= 23 instead
-the generic ``notify-send`` program is used, which (in Debian or Ubuntu) is
-available in the ``libnotify-bin`` package.
+into your ``.gnus`` file. The default is to use notifications_
+library, which is part of Emacs. It also supports the alert_
+library as a fallback when available (see:
+https://github.com/jwiegley/alert#for-users for further info). With
+emacs <= 23 instead the generic ``notify-send`` program is used, which
+(in Debian or Ubuntu) is available in the ``libnotify-bin`` package.
 
 You can also call any program directly by changing the
 ``gnus-desktop-notify-exec-program`` variable, or change the behavior entirely
